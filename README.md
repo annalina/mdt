@@ -5,7 +5,7 @@ Questa è un'applicazione JAVA per realizzare una Macchina di Turing. Per lancia
 `java -jar mdt.jar unitacontrollo.txt input.txt alfabeto.txt`
 
 **unitcontrol.txt**
-Il contenuto del file `unitacontrollo.txt` rappresentano le istruzioni della macchina di Turing. Questo deve necessariamente essere un file contenente un'istruzione per ogni riga nel seguente formato:
+Il contenuto del file `unitacontrollo.txt` rappresenta le istruzioni della macchina di Turing. Questo deve necessariamente essere un file contenente un'istruzione per ogni riga nel seguente formato:
 
 `` `<simbolo_letto,stato_corrente,simbolo_da_scrivere,spostamento_testina,nuovo_stato>` ``
 
@@ -18,9 +18,9 @@ Dove:
 * `nuovo_stato` come `stato_corrente`
 
 **input.txt**
-Il file `input.txt` conterrà l'input del nastro prima che avvenga la computazione, e se la computazione termina producendo un output, questo sarà salvato nello stesso file.
-Il carattere `pipe` (`|`) è utilizzato come delimitatore delle celle di input.
-Si presuppone che il file inizi con il primo simbolo, a partire da sinistra della sequenza di input, che deve essere un carattere di BLANK. L'input termina con un altro carattere di BLANK. Non devono essere presenti altri caratteri di `carriage return`. Ad esempio:
+Il file `input.txt` conterrà l'input del nastro.
+Il carattere `pipe` (`|`) è utilizzato come delimitatore delle celle del nastro in input.
+Si presuppone che il file inizi con il primo simbolo, a partire da sinistra della sequenza di input, che deve essere un carattere di BLANK. L'input termina con un altro carattere di BLANK. Ad esempio:
 
       ^0|1|0|0|1^
 
