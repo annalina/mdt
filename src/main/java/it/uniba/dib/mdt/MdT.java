@@ -46,11 +46,10 @@
 package it.uniba.dib.mdt;
 
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
@@ -66,7 +65,8 @@ public class MdT {
 
     static {
         options = new Options();
-        options.addOption("u", true, "percorso file unita di controllo")
+        options.addOption("h", true, "help")
+                .addOption("u", true, "percorso file unita di controllo")
                 .addOption("n", true, "percorso file nastro")
                 .addOption("a", true, "percorso file alfabeto")
                 .addOption("q", true, "stato iniziale");
@@ -141,14 +141,19 @@ public class MdT {
      */
     public static void main(String[] args) throws ParseException {
         CommandLine cmd = cmdParser.parse(options, args);
-        File unitControl = new File(args[0]);
-        File input = new File(args[1]);
-        File alfabeto = new File(args[2]);
 
-        MdT macchina;
         try {
-            macchina = new MdT(new File(cmd.getOptionValue("u")), new File(cmd.getOptionValue("n")), new File(cmd.getOptionValue("a")), cmd.getOptionValue("q"));
-            macchina.eseguiMdT();
+
+            if (cmd.hasOption("n") && (cmd.hasOption("u")) && (cmd.hasOption("a")) && (cmd.hasOption("q"))) {
+
+                MdT macchina;
+                macchina = new MdT(new File(cmd.getOptionValue("u")), new File(cmd.getOptionValue("n")), new File(cmd.getOptionValue("a")), cmd.getOptionValue("q"));
+                macchina.eseguiMdT();
+            } else {
+                HelpFormatter helpFormatter = new HelpFormatter();
+                helpFormatter.printHelp("Macchina di Turing", options, true);
+            }
+
         } catch (Exception ex) {
             System.out.println("La MdT ha generato il seguente errore: " + ex);
         }
