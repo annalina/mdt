@@ -1,0 +1,1 @@
+java -jar mdt-1.0-SNAPSHOT-jar-with-dependencies.jar -u ../example/unitacontrollo.txt -n ../example/input.txt -a ../example/alfabeto.txt -q q0
